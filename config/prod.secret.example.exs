@@ -1,0 +1,25 @@
+use Mix.Config
+
+# In this file, we keep production configuration that
+# you'll likely want to automate and keep away from
+# your version control system.
+#
+# You should document the content of this
+# file or create a script for recreating it, since it's
+# kept out of version control and might be hard to recover
+# or recreate for your teammates (or yourself later on).
+config :crater, CraterWeb.Endpoint,
+  secret_key_base: "Secret key. You can use `mix phx.gen.secret` to get one"
+
+config :crater, CraterWeb.Auth.Guardian,
+  issuer: "crater",
+  secret_key: "Secret key. You can use `mix guardian.gen.secret` to get one"
+
+# Configure your database
+config :crater, Crater.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "crater_prod",
+  encoding: "UTF-8",
+  pool_size: 15

@@ -1,0 +1,49 @@
+{
+  "name": "crater-web",
+  "version": "1.0.0",
+  "description": ":rocket:",
+  "main": "n/a",
+  "repository": "https://github.com/blvdgroup/crater",
+  "author": "Resi Respati <resir014@gmail.com>",
+  "license": "Apache-2.0",
+  "private": true,
+  "proxy": "http://localhost:4000",
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "dependencies": {
+    "@rematch/core": "^0.5.2",
+    "axios": "^0.18.0",
+    "formik": "^0.11.11",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts-ts": "2.13.0",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "styled-components": "^3.2.1",
+    "styled-normalize": "^4.0.0",
+    "yup": "^0.24.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.0",
+    "@types/node": "^9.4.7",
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.40",
+    "@types/react-dom": "^16.0.4",
+    "@types/react-redux": "^5.0.15",
+    "@types/react-router-dom": "^4.2.4",
+    "@types/react-router-redux": "^5.0.12",
+    "@types/yup": "^0.24.1",
+    "prettier": "^1.11.1",
+    "tslint": "^5.9.1",
+    "tslint-config-blvd": "github:blvdgroup/tslint-config-blvd",
+    "tslint-config-prettier": "^1.9.0",
+    "typescript": "^2.7.2"
+  }
+}
