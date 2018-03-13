@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import AuthSignInForm from '../../components/auth/AuthSignInForm'
+
+import AuthSignInForm from 'components/auth/AuthSignInForm'
+import Page from 'components/ui/Page'
 
 interface AuthSignInPageState {
   formState: {
@@ -12,10 +14,9 @@ interface AuthSignInPageState {
 export default class AuthSignInPage extends React.Component<{}, AuthSignInPageState> {
   public render() {
     return (
-      <div>
-        <h1>AuthSignInPage</h1>
+      <Page>
         <AuthSignInForm onFormFinished={this.handleFormFinished} />
-      </div>
+      </Page>
     )
   }
 

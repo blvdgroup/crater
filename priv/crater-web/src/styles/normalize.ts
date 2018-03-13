@@ -1,5 +1,8 @@
 import { injectGlobal } from 'styled-components'
 import styledNormalize from 'styled-normalize'
+import { fonts, pxSizes, emSizes } from 'styles/variables'
+import { colors } from 'styles/variables'
+import { onEvent, media } from 'styles/mixins'
 
 export default () => injectGlobal`
   ${styledNormalize}
@@ -22,12 +25,24 @@ export default () => injectGlobal`
   }
 
   html {
-    font-family: monospace, monospace;
+    font-family: ${fonts.monospace};
+    font-size: ${pxSizes.fontSize.regular}px;
   }
 
   body {
+    background-color: ${colors.black};
+    color: ${colors.grey};
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+  }
+
+  a {
+    color: ${colors.white};
+    text-decoration: none;
+
+    ${onEvent`
+      text-decoration: underline;
+    `}
   }
 
   img {
@@ -42,5 +57,14 @@ export default () => injectGlobal`
 
   figcaption {
     font-size: 80%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: ${colors.white};
+    text-rendering: optimizeLegibility;
+  }
+
+  .lead {
+    font-size: 1.25rem;
   }
 `

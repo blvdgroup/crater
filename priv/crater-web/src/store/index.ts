@@ -16,3 +16,5 @@ export interface ConnectedReduxProps<S> {
 export const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
   router: routerReducer
 })
+
+export const models = {}

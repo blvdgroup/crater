@@ -12,6 +12,8 @@ import configureStore from './configureStore'
 import * as serviceWorker from './serviceWorker'
 import normalize from 'styles/normalize'
 
+normalize()
+
 const token = document.head.querySelector('meta[name="csrf-token"]')
 
 if (token) {
@@ -23,8 +25,6 @@ const history = createBrowserHistory()
 
 const initialState = window.initialReduxState as ApplicationState
 const store = configureStore(history, initialState)
-
-normalize()
 
 ReactDOM.render(
   <Provider store={store}>

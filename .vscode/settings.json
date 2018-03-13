@@ -3,6 +3,7 @@
   "editor.insertSpaces": true,
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [
+    100,
     140
   ],
   "files.encoding": "utf8",

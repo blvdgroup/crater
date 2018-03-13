@@ -24,7 +24,7 @@ const AuthSignInForm: React.SFC<Props> = ({
   isSubmitting
 }) => (
   <div>
-    <h2>Sign in</h2>
+    <h2>sign in</h2>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">Username</label>
