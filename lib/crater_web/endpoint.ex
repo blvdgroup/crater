@@ -3,7 +3,7 @@ defmodule CraterWeb.Endpoint do
 
   socket "/socket", CraterWeb.UserSocket
 
-  # Serve at "/" the static files from "priv/static" directory.
+  # Serve at "/" the static files from "priv/crater-web/build" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
