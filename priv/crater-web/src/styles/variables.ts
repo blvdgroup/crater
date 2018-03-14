@@ -5,7 +5,7 @@ export const colors = {
   greyBorder: '#333',
   red: '#f00',
   green: '#0f0',
-  blue: '#45a1ff',
+  blue: '#1962ff',
   yellow: '#ff0',
   magenta: '#f0f'
 }

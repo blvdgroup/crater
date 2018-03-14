@@ -60,6 +60,12 @@ const AuthSignInForm: React.SFC<Props> = ({
       <FormGroup>
         <Button kind="button" type="submit" color="primary" size="lg" disabled={isSubmitting}>
           Submit
+        </Button>{' '}
+        <Button kind="button" type="reset" size="lg">
+          Reset
+        </Button>{' '}
+        <Button kind="button" type="reset" size="lg" disabled>
+          Disabled
         </Button>
       </FormGroup>
     </form>
