@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router-dom'
 
 import Root from './Root'
 
-import IndexPage from './pages'
-import AuthModule from './pages/auth'
+import IndexPage from 'pages/index'
+import AuthModule from 'pages/auth'
 
 const routes = (
   <Root>

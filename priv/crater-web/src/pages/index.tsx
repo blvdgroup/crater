@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import Container from 'components/ui/Container'
-import Page from 'components/ui/Page'
+import Container from 'components/layout/Container'
+import Page from 'components/layout/Page'
 
 const HomepageWidget = styled(Container)`
   margin-top: 2rem;

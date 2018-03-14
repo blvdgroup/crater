@@ -3,6 +3,12 @@ import { withFormik, InjectedFormikProps, FormikErrors } from 'formik'
 import axios from 'axios'
 import Yup from 'yup'
 
+import FormLabel from '../ui/FormLabel'
+import FormGroup from '../ui/FormGroup'
+import TextInput from '../ui/TextInput'
+import InputFeedback from '../ui/InputFeedback'
+import Button from '../ui/Button'
+
 interface AuthSignInFormValues {
   username: string
   password: string
@@ -21,36 +27,41 @@ const AuthSignInForm: React.SFC<Props> = ({
   handleChange,
   handleBlur,
   values,
+  dirty,
   isSubmitting
 }) => (
   <div>
     <h2>sign in</h2>
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
+      <FormGroup>
+        <FormLabel htmlFor="username">Username</FormLabel>
+        <TextInput
           type="text"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.username}
           name="username"
+          placeholder="Type a username"
         />
-        {touched.username && errors.username && <div>{errors.username}</div>}
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
+        {touched.username && errors.username && <InputFeedback>{errors.username}</InputFeedback>}
+      </FormGroup>
+      <FormGroup>
+        <FormLabel htmlFor="password">Password</FormLabel>
+        <TextInput
           type="password"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.password}
           name="password"
+          placeholder="Type a password"
         />
-        {touched.password && errors.password && <div>{errors.password}</div>}
-      </div>
-      <button type="submit" disabled={isSubmitting}>
-        Submit
-      </button>
+        {touched.password && errors.password && <InputFeedback>{errors.password}</InputFeedback>}
+      </FormGroup>
+      <FormGroup>
+        <Button kind="button" type="submit" color="primary" size="lg" disabled={isSubmitting}>
+          Submit
+        </Button>
+      </FormGroup>
     </form>
   </div>
 )

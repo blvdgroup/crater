@@ -4,7 +4,10 @@ export const colors = {
   grey: '#999',
   greyBorder: '#333',
   red: '#f00',
-  green: '#0f0'
+  green: '#0f0',
+  blue: '#45a1ff',
+  yellow: '#ff0',
+  magenta: '#f0f'
 }
 
 export const fonts = {
