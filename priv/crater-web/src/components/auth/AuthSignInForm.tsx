@@ -26,6 +26,7 @@ const AuthSignInForm: React.SFC<Props> = ({
   handleSubmit,
   handleChange,
   handleBlur,
+  handleReset,
   values,
   dirty,
   isSubmitting
@@ -61,10 +62,10 @@ const AuthSignInForm: React.SFC<Props> = ({
         <Button kind="button" type="submit" color="primary" size="lg" disabled={isSubmitting}>
           Submit
         </Button>{' '}
-        <Button kind="button" type="reset" size="lg">
+        <Button kind="button" onClick={handleReset} size="lg">
           Reset
         </Button>{' '}
-        <Button kind="button" type="reset" size="lg" disabled>
+        <Button kind="button" size="lg" disabled>
           Disabled
         </Button>
       </FormGroup>
