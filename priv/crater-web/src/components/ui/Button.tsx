@@ -10,7 +10,7 @@ interface ButtonProps {
   id?: string
   className?: string
   kind?: 'button' | 'link' | 'nav-link'
-  color?: 'primary' | 'white'
+  color?: 'primary' | 'success' | 'warning' | 'error' | 'white'
   size?: 'sm' | 'md' | 'lg'
   type?: string
   href?: string
@@ -23,6 +23,9 @@ interface ButtonProps {
 
 const theme = {
   primary: colors.blue,
+  success: colors.green,
+  warning: colors.yellow,
+  error: colors.red,
   white: colors.white
 }
 
@@ -72,7 +75,7 @@ export default styled(Button)`
   cursor: pointer;
 
   &:disabled {
-    color: ${props => (props.color ? darken(0.4, colors.white) : darken(0.4, colors.grey))};
+    color: ${darken(0.4, colors.grey)};
     border-color: ${props =>
       props.color ? darken(0.4, theme[props.color]) : darken(0.4, colors.grey)};
   }
