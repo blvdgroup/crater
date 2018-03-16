@@ -17,29 +17,33 @@ defmodule CraterWeb.Router do
     plug CraterWeb.Auth.Pipeline
   end
 
+  # Route scope for unauthenticated paths
   scope "/api", CraterWeb.Api, as: :api do
     pipe_through :api
 
     scope "/v1", V1, as: :v1 do
       scope "/entries" do
         resources "/", EntriesController, only: [:index, :show]
-
-        scope "/" do
-          pipe_through :api_authenticated
-
-          resources "/", EntriesController, only: [:create, :update, :delete]
-        end
       end
 
       scope "/users" do
         resources "/", UserController, only: [:create]
         post "/sign-in", UserController, :sign_in
+      end
+    end
+  end
 
-        scope "/" do
-          pipe_through :api_authenticated
+  # Route scope for authenticated paths
+  scope "/api", CraterWeb.Api, as: :api do
+    pipe_through [:api, :api_authenticated]
 
-          get "/me", UserController, :me
-        end
+    scope "/v1", V1, as: :v1 do
+      scope "/entries" do
+        resources "/", EntriesController, only: [:create, :update, :delete]
+      end
+
+      scope "/users" do
+        get "/me", UserController, :me
       end
     end
   end
