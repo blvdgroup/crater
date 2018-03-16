@@ -18,6 +18,15 @@ erl_crash.dump
 # variables.
 /config/*.secret.exs
 
+# Environment variables + other files
+.DS_Store
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 # We don't need to commit bundled assets. These are provided by Webpack.
 /priv/static
 
