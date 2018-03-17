@@ -24,6 +24,7 @@ defmodule Crater.Entries.Snippet do
     |> cast(attrs, [:id, :title, :language, :body, :description])
     |> put_assoc(:user, user)
     |> validate_required([:id, :title, :language, :body])
+    |> validate_length(:title, min: 5, max: 255)
   end
 
   defp get_user(nil), do: nil
