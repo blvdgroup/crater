@@ -7,11 +7,11 @@ interface EditSnippetPageProps {
   snippets: any[]
 }
 
-interface RouteProps {
+interface RouteParams {
   id: string
 }
 
-type AllProps = RouteComponentProps<RouteProps> & EditSnippetPageProps
+type AllProps = RouteComponentProps<RouteParams> & EditSnippetPageProps
 
 export default class EditSnippetPage extends React.Component<AllProps> {
   public render() {

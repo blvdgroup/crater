@@ -7,11 +7,11 @@ interface ShowSnippetPageProps {
   snippets: any[]
 }
 
-interface RouteProps {
+interface RouteParams {
   id: string
 }
 
-type AllProps = RouteComponentProps<RouteProps> & ShowSnippetPageProps
+type AllProps = RouteComponentProps<RouteParams> & ShowSnippetPageProps
 
 export default class ShowSnippetPage extends React.Component<AllProps> {
   public render() {
