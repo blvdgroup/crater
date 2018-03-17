@@ -9,8 +9,8 @@ import CreateSnippetPage from './create'
 const SnippetsModule: React.SFC<RouteComponentProps<{}>> = ({ match }) => (
   <Switch>
     <Route exact path={match.path + '/'} component={AllSnippetsPage} />
+    <Route exact path={match.path + '/new'} component={CreateSnippetPage} />
     <Route path={match.path + '/:id'} component={ShowSnippetPage} />
-    <Route path={match.path + '/new'} component={CreateSnippetPage} />
     <Route component={NotFoundPage} />
   </Switch>
 )
