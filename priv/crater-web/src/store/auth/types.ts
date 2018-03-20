@@ -6,6 +6,7 @@ export interface AuthState {
   isLoggedIn: boolean
   user?: UserInfo
   token?: string
+  errors?: boolean
 }
 
 // Action Types
@@ -31,6 +32,10 @@ export interface LoginRequestSuccessAction extends Action {
   }
 }
 
+export interface LoginRequestFailureAction extends Action {
+  type: AuthActionTypes.LOGIN_REQUEST_FAILURE
+}
+
 // Action Union Type
 
 export type AuthActions = SetTokenFromCookieAction | LoginRequestSuccessAction
@@ -40,4 +45,9 @@ export type AuthActions = SetTokenFromCookieAction | LoginRequestSuccessAction
 export interface UserInfo {
   id: string
   username: string
+}
+
+export interface AuthError {
+  error: boolean
+  message?: string
 }

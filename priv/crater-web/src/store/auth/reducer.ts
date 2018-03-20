@@ -3,6 +3,7 @@ import { AuthState, AuthActions, AuthActionTypes } from './types'
 
 export const initialState: AuthState = {
   isLoggedIn: false,
+  errors: false,
   user: undefined,
   token: undefined
 }
