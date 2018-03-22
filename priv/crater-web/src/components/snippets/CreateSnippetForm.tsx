@@ -5,11 +5,12 @@ import { UnControlled as CodeMirror } from 'react-codemirror2'
 import styled from 'styled-components'
 import Yup from 'yup'
 
+import { colors } from 'styles/variables'
 import FormGroup from '../ui/FormGroup'
 import FormLabel from '../ui/FormLabel'
 import TextInput from '../ui/TextInput'
+import Button from '../ui/Button'
 import InputFeedback from '../ui/InputFeedback'
-import { colors } from 'styles/variables'
 
 // Dynamic imports with every theme/mode change?
 import 'codemirror/lib/codemirror.css'
@@ -41,40 +42,48 @@ const CreateSnippetForm: React.SFC<Props> = ({
   setFieldValue,
   isSubmitting
 }) => (
-  <div>
-    <h2>CreateSnippetForm</h2>
-    <form onSubmit={handleSubmit}>
-      <FormGroup>
-        <FormLabel htmlFor="title" hidden>
-          title
-        </FormLabel>
-        <TextInput
-          type="text"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.title}
-          name="title"
-          placeholder="Type a title"
-        />
-        {touched.title && errors.title && <InputFeedback>{errors.title}</InputFeedback>}
-      </FormGroup>
-      <FormGroup>
-        <CodeEditor
-          value={values.body}
-          options={{
-            mode: 'javascript',
-            theme: '3024-night',
-            lineNumbers: true
-          }}
-          onChange={(editor, data, value) => {
-            setFieldValue('body', value)
-          }}
-          onBlur={handleBlur}
-        />
-        {touched.body && errors.body && <InputFeedback>{errors.body}</InputFeedback>}
-      </FormGroup>
-    </form>
-  </div>
+  <form onSubmit={handleSubmit}>
+    <FormGroup>
+      <FormLabel htmlFor="title" screenReader>
+        title
+      </FormLabel>
+      <TextInput
+        type="text"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.title}
+        name="title"
+        placeholder="Type a title"
+      />
+      {touched.title && errors.title && <InputFeedback>{errors.title}</InputFeedback>}
+    </FormGroup>
+    <FormGroup>
+      <CodeEditor
+        value={values.body}
+        options={{
+          mode: 'javascript',
+          theme: '3024-night',
+          lineNumbers: true
+        }}
+        onChange={(editor, data, value) => {
+          setFieldValue('body', value)
+        }}
+        onBlur={handleBlur}
+      />
+      {touched.body && errors.body && <InputFeedback>{errors.body}</InputFeedback>}
+    </FormGroup>
+    <FormGroup>
+      <Button kind="button" type="submit" color="primary" size="lg" disabled={isSubmitting}>
+        Submit
+      </Button>{' '}
+      <Button kind="button" onClick={handleReset} size="lg">
+        Reset
+      </Button>{' '}
+      <Button kind="button" size="lg" disabled>
+        Disabled
+      </Button>
+    </FormGroup>
+  </form>
 )
 
 export default withFormik<{}, CreateSnippetFormValues>({

@@ -9,11 +9,11 @@ const StyledFormLabel = styled.label`
 interface FormLabelProps {
   className?: string
   htmlFor?: string
-  hidden?: boolean
+  screenReader?: boolean
 }
 
-const FormLabel: React.SFC<FormLabelProps> = ({ className, htmlFor, children, hidden }) => (
-  <StyledFormLabel className={className} htmlFor={htmlFor} hidden={hidden}>
+const FormLabel: React.SFC<FormLabelProps> = ({ className, htmlFor, children, screenReader }) => (
+  <StyledFormLabel className={className} htmlFor={htmlFor} hidden={screenReader}>
     {children}
   </StyledFormLabel>
 )
