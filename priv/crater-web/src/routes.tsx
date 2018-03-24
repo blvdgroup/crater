@@ -16,7 +16,7 @@ const routes = (
         exact
         path="/"
         component={Loadable({
-          loader: () => import(/* webpackChunkName: home */ 'pages/index'),
+          loader: () => import(/* webpackChunkName: 'home' */ 'pages/index'),
           loading: RouteLoading,
           modules: ['home']
         })}
@@ -24,7 +24,7 @@ const routes = (
       <Route
         path="/auth"
         component={Loadable({
-          loader: () => import(/* webpackChunkName: auth */ 'pages/auth'),
+          loader: () => import(/* webpackChunkName: 'auth' */ 'pages/auth'),
           loading: RouteLoading,
           modules: ['auth']
         })}
@@ -32,7 +32,7 @@ const routes = (
       <Route
         path="/snippets"
         component={Loadable({
-          loader: () => import(/* webpackChunkName: snippets */ 'pages/snippets'),
+          loader: () => import(/* webpackChunkName: 'snippets' */ 'pages/snippets'),
           loading: RouteLoading,
           modules: ['snippets']
         })}

@@ -12,14 +12,14 @@ const AuthModule: React.SFC<RouteComponentProps<{}>> = ({ match }) => (
     <Route
       path={match.path + '/sign-in'}
       component={Loadable({
-        loader: () => import(/* webpackChunkName: auth~sign-in */ './sign-in'),
+        loader: () => import(/* webpackChunkName: 'auth~sign-in' */ './sign-in'),
         loading: RouteLoading
       })}
     />
     <Route
       path={match.path + '/register'}
       component={Loadable({
-        loader: () => import(/* webpackChunkName: auth~register */ './register'),
+        loader: () => import(/* webpackChunkName: 'auth~register' */ './register'),
         loading: RouteLoading
       })}
     />
