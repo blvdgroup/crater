@@ -10,6 +10,7 @@ defmodule Crater.Entries.Snippet do
     field :body, :string
     field :description, :string
     field :language, :string
+    field :slug, :string
     field :title, :string
     belongs_to(:user, Crater.Accounts.User, on_replace: :nilify)
 
@@ -21,11 +22,14 @@ defmodule Crater.Entries.Snippet do
     user = get_user(attrs["user_id"])
 
     snippet
-    |> cast(attrs, [:id, :title, :language, :body, :description])
+    |> cast(attrs, [:id, :title, :language, :slug, :body, :description])
     |> put_assoc(:user, user)
     |> validate_required([:id, :title, :language, :body])
     |> validate_length(:title, min: 5, max: 255)
+    |> put_slug
   end
+
+  defp put_slug(changeset), do: changeset
 
   defp get_user(nil), do: nil
   defp get_user(id) do

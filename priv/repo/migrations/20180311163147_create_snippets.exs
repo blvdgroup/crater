@@ -13,9 +13,10 @@ defmodule Crater.Repo.Migrations.CreateSnippets do
       add :user_id, references(:users, type: :uuid, on_delete: :nothing)
 
       # And *only now* do we include our actual columns.
-      add :title, :string
+      add :title, :string, null: false
+      add :slug, :string
       add :language, :string
-      add :body, :text
+      add :body, :text, null: false
       add :description, :text
     end
 

@@ -9,8 +9,8 @@ defmodule Crater.Repo.Migrations.CreateUsers do
       add :id, :uuid, primary_key: true
       timestamps()
 
-      add :username, :string
-      add :password_hash, :string
+      add :username, :string, null: false
+      add :password_hash, :string, null: false
     end
 
     create unique_index(:users, [:username])
