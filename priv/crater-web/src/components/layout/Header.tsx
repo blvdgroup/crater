@@ -1,9 +1,12 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
+
 import { pxSizes, colors, emSizes } from 'styles/variables'
 import Container from './Container'
 import { onEvent } from 'styles/mixins'
+import { ApplicationState, ConnectedReduxProps } from 'store'
 
 const StyledHeader = styled.header`
   border-bottom: 1px solid ${colors.greyBorder};
@@ -38,11 +41,19 @@ const HeaderTitleLink = styled(Link)`
   `};
 `
 
+const HeaderNavLink = styled(Link)`
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+`
+
 const HeaderRight = styled.nav`
   padding: 0.5rem ${emSizes.containerPadding}rem;
 `
 
-const Header: React.SFC = () => (
+type Props = ApplicationState & ConnectedReduxProps<ApplicationState>
+
+const Header: React.SFC<Props> = ({ auth, dispatch }) => (
   <StyledHeader>
     <HeaderInner>
       <HeaderLeft>
@@ -53,10 +64,22 @@ const Header: React.SFC = () => (
         </HeaderTitle>
       </HeaderLeft>
       <HeaderRight>
-        <Link to="/auth/sign-in">sign in</Link>
+        {auth.isLoggedIn === false && <Link to="/auth/sign-in">sign in</Link>}
+        {auth.isLoggedIn && (
+          <React.Fragment>
+            <HeaderNavLink to="/profile">
+              {auth.currentUser ? auth.currentUser.username : 'profile'}
+            </HeaderNavLink>
+            <HeaderNavLink to="/auth/sign-out">sign out</HeaderNavLink>
+          </React.Fragment>
+        )}
       </HeaderRight>
     </HeaderInner>
   </StyledHeader>
 )
 
-export default Header
+const mapStateToProps = (state: ApplicationState) => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(Header)
