@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Switch, Route, RouteComponentProps } from 'react-router-dom'
 
 import NotFoundPage from 'pages/404'

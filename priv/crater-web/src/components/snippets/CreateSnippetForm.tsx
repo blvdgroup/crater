@@ -1,9 +1,9 @@
-import React from 'react'
+import * as React from 'react'
 import { InjectedFormikProps, withFormik } from 'formik'
 // TODO: Replace with Controlled editor and hook up with Formik
 import { UnControlled as CodeMirror } from 'react-codemirror2'
 import styled from 'styled-components'
-import Yup from 'yup'
+import * as Yup from 'yup'
 
 import { colors } from 'styles/variables'
 import FormGroup from '../ui/FormGroup'

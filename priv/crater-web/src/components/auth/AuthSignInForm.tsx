@@ -1,7 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import { withFormik, InjectedFormikProps, FormikErrors } from 'formik'
 import axios from 'axios'
-import Yup from 'yup'
+import * as Yup from 'yup'
 
 import FormLabel from '../ui/FormLabel'
 import FormGroup from '../ui/FormGroup'

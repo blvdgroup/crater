@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import axios from 'axios'
 
 import AuthSignInForm from 'components/auth/AuthSignInForm'

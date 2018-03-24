@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "build/dist",
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
     "lib": ["esnext", "dom"],
     "sourceMap": true,
@@ -12,7 +12,6 @@
     "baseUrl": "src",
     "strict": true,
     "noImplicitReturns": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true
   },
