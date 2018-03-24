@@ -4,12 +4,9 @@ import * as Loadable from 'react-loadable'
 
 import Root from './Root'
 
-import IndexPage from 'pages/index'
-import AuthModule from 'pages/auth'
-import SnippetsModule from 'pages/snippets'
-import RouteLoading from 'components/ui/RouteLoading'
+import LoadingPage from 'pages/loading'
 
-const routes = (
+const Routes: React.SFC = () => (
   <Root>
     <Switch>
       <Route
@@ -17,7 +14,7 @@ const routes = (
         path="/"
         component={Loadable({
           loader: () => import(/* webpackChunkName: 'home' */ 'pages/index'),
-          loading: RouteLoading,
+          loading: LoadingPage,
           modules: ['home']
         })}
       />
@@ -25,7 +22,7 @@ const routes = (
         path="/auth"
         component={Loadable({
           loader: () => import(/* webpackChunkName: 'auth' */ 'pages/auth'),
-          loading: RouteLoading,
+          loading: LoadingPage,
           modules: ['auth']
         })}
       />
@@ -33,7 +30,7 @@ const routes = (
         path="/snippets"
         component={Loadable({
           loader: () => import(/* webpackChunkName: 'snippets' */ 'pages/snippets'),
-          loading: RouteLoading,
+          loading: LoadingPage,
           modules: ['snippets']
         })}
       />
@@ -42,4 +39,4 @@ const routes = (
   </Root>
 )
 
-export default routes
+export default Routes

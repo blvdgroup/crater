@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import axios from 'axios'
 
-import routes from './routes'
+import Routes from './routes'
 import { ApplicationState } from './store'
 import configureStore from './configureStore'
 import * as serviceWorker from './serviceWorker'
@@ -34,7 +34,9 @@ const store = configureStore(history, initialState)
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history} children={routes} />
+    <ConnectedRouter history={history}>
+      <Routes />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 )

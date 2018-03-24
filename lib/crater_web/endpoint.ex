@@ -12,7 +12,7 @@ defmodule CraterWeb.Endpoint do
     at: "/",
     from: "priv/crater-web/build",
     gzip: false,
-    only: ~w(index.html favicon.ico static service-worker.js)
+    only: ~w(index.html manifest.json asset-manifest.json favicon.ico static service-worker.js)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
