@@ -4,7 +4,7 @@ import { Action } from 'redux'
 
 export interface AuthState {
   isLoggedIn: boolean
-  user?: UserInfo
+  currentUser?: UserInfo
   token?: string
   errors?: boolean
 }
@@ -13,7 +13,8 @@ export interface AuthState {
 
 export const enum AuthActionTypes {
   SET_TOKEN_FROM_COOKIE = '@@auth/SET_TOKEN_FROM_COOKIE',
-  LOGIN_REQUEST_SUCCESS = '@@auth/LOGIN_REQUEST_SUCCESS',
+  SET_ACTIVE_USER = '@@auth/SET_ACTIVE_USER',
+  SET_LOGGED_IN = '@@auth/SET_LOGGED_IN',
   LOGIN_REQUEST_FAILURE = '@@auth/LOGIN_REQUEST_FAILURE'
 }
 
@@ -24,11 +25,17 @@ export interface SetTokenFromCookieAction extends Action {
   }
 }
 
-export interface LoginRequestSuccessAction extends Action {
-  type: AuthActionTypes.LOGIN_REQUEST_SUCCESS
+export interface SetActiveUserAction extends Action {
+  type: AuthActionTypes.SET_ACTIVE_USER
   payload: {
     user: UserInfo
-    token: string
+  }
+}
+
+export interface SetLoggedInAction extends Action {
+  type: AuthActionTypes.SET_LOGGED_IN
+  payload: {
+    isLoggedIn: boolean
   }
 }
 
@@ -38,7 +45,7 @@ export interface LoginRequestFailureAction extends Action {
 
 // Action Union Type
 
-export type AuthActions = SetTokenFromCookieAction | LoginRequestSuccessAction
+export type AuthActions = SetTokenFromCookieAction | SetLoggedInAction
 
 // Other Types
 

@@ -15,7 +15,8 @@ interface AuthSignInFormValues {
 }
 
 interface AuthSignInFormProps {
-  onFormFinished: () => void
+  onFormFinished: (data: any) => void
+  onFormError?: (err: any) => void
 }
 
 type Props = InjectedFormikProps<AuthSignInFormProps, AuthSignInFormValues>
@@ -29,6 +30,7 @@ const AuthSignInForm: React.SFC<Props> = ({
   handleReset,
   values,
   dirty,
+  status,
   isSubmitting
 }) => (
   <div>
@@ -59,6 +61,10 @@ const AuthSignInForm: React.SFC<Props> = ({
         {touched.password && errors.password && <InputFeedback>{errors.password}</InputFeedback>}
       </FormGroup>
       <FormGroup>
+        {status && status.status === 'error' && <InputFeedback>{status.message}</InputFeedback>}
+        {status && status.status === 'ok' && <InputFeedback valid>{status.message}</InputFeedback>}
+      </FormGroup>
+      <FormGroup>
         <Button kind="button" type="submit" color="primary" size="lg" disabled={isSubmitting}>
           Submit
         </Button>{' '}
@@ -79,20 +85,21 @@ export default withFormik<AuthSignInFormProps, AuthSignInFormValues>({
     username: Yup.string().required('Username is required'),
     password: Yup.string().required('Password is required')
   }),
-  handleSubmit: (values, { setSubmitting, props }) => {
+  handleSubmit: (values, { setSubmitting, setStatus, props }) => {
     axios
       .post('/api/v1/users/sign-in', {
         user: values
       })
       .then(res => res.data)
       .then(data => {
-        console.log(data)
         setSubmitting(false)
-        props.onFormFinished()
+        setStatus(data)
+        props.onFormFinished(data)
       })
       .catch(err => {
-        console.error(err)
+        const data = err.response.data
         setSubmitting(false)
+        setStatus(data)
       })
   }
 })(AuthSignInForm)

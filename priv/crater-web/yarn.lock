@@ -36,6 +36,10 @@
   version "22.2.0"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.0.tgz#55ce83139f7ad1b48b414c3927746614c6963c0f"
 
+"@types/js-cookie@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.1.0.tgz#a8916246aa994db646c66d54c854916213300a51"
+
 "@types/node@*", "@types/node@^9.4.7":
   version "9.4.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.7.tgz#57d81cd98719df2c9de118f2d5f3b1120dcd7275"
@@ -3508,6 +3512,10 @@ jest@20.0.4:
 js-base64@^2.1.9:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.3.tgz#2e545ec2b0f2957f41356510205214e98fad6582"
+
+js-cookie@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.0.tgz#1b2c279a6eece380a12168b92485265b35b1effb"
 
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"

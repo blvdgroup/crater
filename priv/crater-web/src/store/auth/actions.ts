@@ -2,8 +2,9 @@ import { ActionCreator } from 'redux'
 import {
   SetTokenFromCookieAction,
   AuthActionTypes,
-  LoginRequestSuccessAction,
-  UserInfo
+  SetLoggedInAction,
+  UserInfo,
+  SetActiveUserAction
 } from './types'
 
 export const setTokenFromCookie: ActionCreator<SetTokenFromCookieAction> = (token: string) => ({
@@ -13,13 +14,16 @@ export const setTokenFromCookie: ActionCreator<SetTokenFromCookieAction> = (toke
   }
 })
 
-export const loginRequestSuccess: ActionCreator<LoginRequestSuccessAction> = (
-  user: UserInfo,
-  token: string
-) => ({
-  type: AuthActionTypes.LOGIN_REQUEST_SUCCESS,
+export const setLoggedIn: ActionCreator<SetLoggedInAction> = (isLoggedIn: boolean) => ({
+  type: AuthActionTypes.SET_LOGGED_IN,
   payload: {
-    token,
+    isLoggedIn
+  }
+})
+
+export const setActiveUser: ActionCreator<SetActiveUserAction> = (user: UserInfo) => ({
+  type: AuthActionTypes.SET_ACTIVE_USER,
+  payload: {
     user
   }
 })

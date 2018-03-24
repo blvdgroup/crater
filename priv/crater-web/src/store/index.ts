@@ -1,9 +1,14 @@
 import { combineReducers, Dispatch, Reducer } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
+import { AuthState } from './auth/types'
+import authReducer from './auth/reducer'
+
 // The top-level state object
 // tslint:disable-next-line:no-empty-interface
-export interface ApplicationState {}
+export interface ApplicationState {
+  auth: AuthState
+}
 
 // Additional props for connected React components. This prop is passed by default with `connect()`
 export interface ConnectedReduxProps<S> {
@@ -14,7 +19,8 @@ export interface ConnectedReduxProps<S> {
 // using the reducer with the matching name. It's important that the names match exactly, and that
 // the reducer acts on the corresponding ApplicationState property type.
 export const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
-  router: routerReducer
+  router: routerReducer,
+  auth: authReducer
 })
 
 export const models = {}
