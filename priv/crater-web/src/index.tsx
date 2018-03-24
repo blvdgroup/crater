@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import axios from 'axios'
 
-import Routes from './routes'
+import Routes from './Routes'
 import { ApplicationState } from './store'
 import configureStore from './configureStore'
 import * as serviceWorker from './serviceWorker'
