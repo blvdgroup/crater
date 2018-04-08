@@ -34,6 +34,7 @@ const Routes: React.SFC = () => (
           modules: ['snippets']
         })}
       />
+      <Route path="/profile" render={() => <div>Profile</div>} />
       <Route path="/test" render={() => <div>Test Page</div>} />
     </Switch>
   </Root>
