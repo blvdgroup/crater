@@ -1,21 +1,15 @@
 import * as React from 'react'
 import { InjectedFormikProps, withFormik } from 'formik'
-// TODO: Replace with Controlled editor and hook up with Formik
-import { UnControlled as CodeMirror } from 'react-codemirror2'
 import styled from 'styled-components'
 import * as Yup from 'yup'
 
 import { colors } from 'styles/variables'
+import CodeMirror from './CodeMirror'
 import FormGroup from '../ui/FormGroup'
 import FormLabel from '../ui/FormLabel'
 import TextInput from '../ui/TextInput'
 import Button from '../ui/Button'
 import InputFeedback from '../ui/InputFeedback'
-
-// Dynamic imports with every theme/mode change?
-import 'codemirror/lib/codemirror.css'
-import 'codemirror/theme/3024-night.css'
-import 'codemirror/mode/javascript/javascript'
 
 interface CreateSnippetFormValues {
   title: string
@@ -26,10 +20,6 @@ interface CreateSnippetFormValues {
 
 type Props = InjectedFormikProps<{}, CreateSnippetFormValues>
 
-const CodeEditor = styled(CodeMirror)`
-  border: 1px dotted ${colors.grey};
-`
-
 const CreateSnippetForm: React.SFC<Props> = ({
   touched,
   errors,
@@ -37,6 +27,7 @@ const CreateSnippetForm: React.SFC<Props> = ({
   handleChange,
   handleBlur,
   handleReset,
+  setFieldTouched,
   values,
   dirty,
   setFieldValue,
@@ -57,21 +48,14 @@ const CreateSnippetForm: React.SFC<Props> = ({
       />
       {touched.title && errors.title && <InputFeedback>{errors.title}</InputFeedback>}
     </FormGroup>
-    <FormGroup>
-      <CodeEditor
-        value={values.body}
-        options={{
-          mode: 'javascript',
-          theme: '3024-night',
-          lineNumbers: true
-        }}
-        onChange={(editor, data, value) => {
-          setFieldValue('body', value)
-        }}
-        onBlur={handleBlur}
-      />
-      {touched.body && errors.body && <InputFeedback>{errors.body}</InputFeedback>}
-    </FormGroup>
+    <CodeMirror
+      value={values.body}
+      field="body"
+      onChange={setFieldValue}
+      onBlur={setFieldTouched}
+      touched={touched.body}
+      errors={errors.body}
+    />
     <FormGroup>
       <Button kind="button" type="submit" color="primary" size="lg" disabled={isSubmitting}>
         Submit
