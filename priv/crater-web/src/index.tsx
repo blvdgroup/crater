@@ -31,21 +31,8 @@ axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.common['Accept'] = 'application/json'
 
 if (jwtToken) {
-  console.log('Setting token')
   // store.dispatch(setTokenFromCookie(jwtToken))
   axios.defaults.headers.common.Authorization = `Bearer ${jwtToken}`
-
-  console.log('Getting current user from token')
-  axios
-    .get('/api/v1/users/me')
-    .then(res => res.data)
-    .then(data => {
-      console.log(data.data)
-      if (data.data) {
-        store.dispatch(setLoggedIn(true))
-        store.dispatch(setActiveUser(data.data))
-      }
-    })
 } else {
   console.log('Unauthenticated')
 }

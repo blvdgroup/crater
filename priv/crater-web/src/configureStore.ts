@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, Store } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { History } from 'history'
-import { init } from '@rematch/core'
+import thunkMiddleware from 'redux-thunk'
 
 import { ApplicationState, reducers } from './store'
 
@@ -15,10 +15,6 @@ export default function configureStore(
   return createStore<ApplicationState>(
     reducers,
     initialState,
-    composeEnhancers(applyMiddleware(routerMiddleware(history)))
+    composeEnhancers(applyMiddleware(routerMiddleware(history), thunkMiddleware))
   )
-}
-
-export function configureStoreWithRematch(): Store<ApplicationState> {
-  return init({})
 }
