@@ -17,7 +17,6 @@ export const enum AuthActionTypes {
   SET_ACTIVE_USER = '@@auth/SET_ACTIVE_USER',
   SET_LOGGED_IN = '@@auth/SET_LOGGED_IN',
   CHECK = '@@auth/CHECK',
-  ERROR = '@@auth/ERROR',
   LOGIN_REQUEST_FAILURE = '@@auth/LOGIN_REQUEST_FAILURE'
 }
 

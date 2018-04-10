@@ -15,8 +15,7 @@ export const checkAuth: ActionCreator<ThunkAction<Promise<Action>, AuthState, {}
       dispatch(setLoggedIn(true))
       return dispatch(setActiveUser(data))
     } catch (e) {
-      const err = e as AxiosError
-      return dispatch(authError(err.message))
+      return dispatch(setLoggedIn(false))
     }
   }
 }
@@ -32,13 +31,6 @@ export const setLoggedIn = (isLoggedIn: boolean) => ({
   type: AuthActionTypes.SET_LOGGED_IN,
   payload: {
     isLoggedIn
-  }
-})
-
-export const authError = (message: string) => ({
-  type: AuthActionTypes.ERROR,
-  payload: {
-    message
   }
 })
 
