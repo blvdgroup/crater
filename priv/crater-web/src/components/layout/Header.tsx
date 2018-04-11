@@ -1,12 +1,18 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
+import { connect, Dispatch } from 'react-redux'
+import { ThunkAction } from 'redux-thunk'
+import { Action } from 'redux'
 import styled from 'styled-components'
+import { darken } from 'polished'
 
 import { pxSizes, colors, emSizes } from 'styles/variables'
 import Container from './Container'
 import { onEvent } from 'styles/mixins'
 import { ApplicationState, ConnectedReduxProps } from 'store'
+import { signOut } from 'store/auth/actions'
+import { AuthState } from 'store/auth/types'
+import LogoutLink from '../auth/LogoutLink'
 
 const StyledHeader = styled.header`
   border-bottom: 1px solid ${colors.greyBorder};
@@ -47,39 +53,70 @@ const HeaderNavLink = styled(Link)`
   }
 `
 
+const StyledLogoutLink = styled(LogoutLink)`
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+`
+
 const HeaderRight = styled.nav`
   padding: 0.5rem ${emSizes.containerPadding}rem;
 `
 
-type Props = ApplicationState & ConnectedReduxProps<ApplicationState>
+interface PropsFromState {
+  auth: AuthState
+}
 
-const Header: React.SFC<Props> = ({ auth, dispatch }) => (
-  <StyledHeader>
-    <HeaderInner>
-      <HeaderLeft>
-        <HeaderTitle>
-          <HeaderTitleLink to="/">
-            🚀 <span>crater</span>
-          </HeaderTitleLink>
-        </HeaderTitle>
-      </HeaderLeft>
-      <HeaderRight>
-        {auth.isLoggedIn === false && <Link to="/auth/sign-in">sign in</Link>}
-        {auth.isLoggedIn && (
-          <React.Fragment>
-            <HeaderNavLink to="/profile">
-              {auth.currentUser ? auth.currentUser.username : 'profile'}
-            </HeaderNavLink>
-            <HeaderNavLink to="/auth/sign-out">sign out</HeaderNavLink>
-          </React.Fragment>
-        )}
-      </HeaderRight>
-    </HeaderInner>
-  </StyledHeader>
-)
+interface PropsFromDispatch {
+  logOut: () => any
+}
+
+type Props = PropsFromState & PropsFromDispatch & RouteComponentProps<{}>
+
+class Header extends React.Component<Props> {
+  public handleLogout = () => {
+    this.props.logOut()
+    this.props.history.push('/auth')
+  }
+
+  public render() {
+    const { auth, logOut } = this.props
+    return (
+      <StyledHeader>
+        <HeaderInner>
+          <HeaderLeft>
+            <HeaderTitle>
+              <HeaderTitleLink to="/">
+                🚀 <span>crater</span>
+              </HeaderTitleLink>
+            </HeaderTitle>
+          </HeaderLeft>
+          <HeaderRight>
+            {auth.isLoggedIn === true ? (
+              <React.Fragment>
+                <HeaderNavLink to="/profile">
+                  {auth.currentUser ? auth.currentUser.username : 'profile'}
+                </HeaderNavLink>
+                <StyledLogoutLink loading={auth.loading} onClick={() => this.handleLogout()}>
+                  sign out
+                </StyledLogoutLink>
+              </React.Fragment>
+            ) : (
+              <Link to="/auth/sign-in">sign in</Link>
+            )}
+          </HeaderRight>
+        </HeaderInner>
+      </StyledHeader>
+    )
+  }
+}
 
 const mapStateToProps = (state: ApplicationState) => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps)(Header)
+const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>) => ({
+  logOut: () => dispatch(signOut())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))

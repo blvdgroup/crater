@@ -12,7 +12,7 @@ import { ApplicationState } from './store'
 import configureStore from './configureStore'
 import * as serviceWorker from './serviceWorker'
 import normalize from 'styles/normalize'
-import { setTokenFromCookie, setActiveUser, setLoggedIn } from 'store/auth/actions'
+import { setTokenFromCookie, setActiveUser, setLoggedIn, checkAuth } from 'store/auth/actions'
 
 normalize()
 
@@ -33,6 +33,8 @@ axios.defaults.headers.common['Accept'] = 'application/json'
 if (jwtToken) {
   // store.dispatch(setTokenFromCookie(jwtToken))
   axios.defaults.headers.common.Authorization = `Bearer ${jwtToken}`
+
+  store.dispatch(checkAuth())
 } else {
   console.log('Unauthenticated')
 }

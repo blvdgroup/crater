@@ -8,7 +8,7 @@ import { ConnectedReduxProps } from 'store'
 type Props = ConnectedReduxProps<AuthState>
 
 class AuthCheck extends React.Component<Props> {
-  public componentDidMount() {
+  public componentWillMount() {
     this.props.dispatch(checkAuth())
   }
   public render() {

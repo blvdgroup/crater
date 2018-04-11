@@ -1,7 +1,7 @@
 import * as React from 'react'
 import axios from 'axios'
 import * as Cookies from 'js-cookie'
-import { RouteComponentProps } from 'react-router'
+import { RouteComponentProps, Redirect } from 'react-router'
 import { connect } from 'react-redux'
 
 import AuthSignInForm from 'components/auth/AuthSignInForm'
@@ -9,7 +9,7 @@ import Page from 'components/layout/Page'
 import Container from 'components/layout/Container'
 import { ApplicationState, ConnectedReduxProps } from 'store'
 import { AuthState } from 'store/auth/types'
-import { setLoggedIn } from 'store/auth/actions'
+import { setLoggedIn, setActiveUser, checkAuthComplete } from 'store/auth/actions'
 
 interface AuthSignInPageState {
   formState: {
@@ -22,6 +22,13 @@ type Props = RouteComponentProps<{}> & AuthState & ConnectedReduxProps<AuthState
 
 class AuthSignInPage extends React.Component<Props, AuthSignInPageState> {
   public render() {
+    const { from } = this.props.location.state || { from: { pathname: '/' } }
+    const { isLoggedIn } = this.props
+
+    if (isLoggedIn) {
+      return <Redirect to={from} />
+    }
+
     return (
       <Page>
         <Container size="md">
@@ -41,7 +48,7 @@ class AuthSignInPage extends React.Component<Props, AuthSignInPageState> {
       }
     }
 
-    dispatch(setLoggedIn(true))
+    dispatch(checkAuthComplete(true, data.data.user))
     history.push('/')
   }
 }

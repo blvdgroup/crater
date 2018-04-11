@@ -4,12 +4,12 @@ import * as Loadable from 'react-loadable'
 
 import Root from 'components/layout/Root'
 import AuthCheck from 'components/auth/AuthCheck'
+import AuthenticatedRoute from 'components/auth/AuthenticatedRoute'
 
 import LoadingPage from 'pages/loading'
 
 const Routes: React.SFC = () => (
   <Root>
-    <AuthCheck />
     <Switch>
       <Route
         exact
@@ -36,7 +36,7 @@ const Routes: React.SFC = () => (
           modules: ['snippets']
         })}
       />
-      <Route path="/profile" render={() => <div>Profile</div>} />
+      <AuthenticatedRoute path="/profile" render={() => <div>Profile</div>} />
       <Route path="/test" render={() => <div>Test Page</div>} />
     </Switch>
   </Root>

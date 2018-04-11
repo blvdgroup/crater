@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Switch, Route, RouteComponentProps } from 'react-router-dom'
+import { Switch, Route, RouteComponentProps, Redirect } from 'react-router-dom'
 import * as Loadable from 'react-loadable'
 
 import LoadingPage from 'pages/loading'
@@ -20,12 +20,7 @@ const AuthModule: React.SFC<RouteComponentProps<{}>> = ({ match }) => (
         loading: LoadingPage
       })}
     />
-    <Route
-      component={Loadable({
-        loader: () => import(/* webpackChunkName: '404' */ 'pages/404'),
-        loading: LoadingPage
-      })}
-    />
+    <Route render={() => <Redirect to={match.path + '/sign-in'} />} />
   </Switch>
 )
 

@@ -18,7 +18,10 @@ defmodule CraterWeb.Api.V1.UserView do
       status: :ok,
       data: %{
         token: jwt,
-        username: user.username
+        user: %{
+          id: user.id,
+          username: user.username
+        }
       },
       message: "Successfully logged in!"
     }
