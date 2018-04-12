@@ -62,21 +62,19 @@ const CreateSnippetForm: React.SFC<Props> = ({
       </Button>{' '}
       <Button kind="button" onClick={handleReset} size="lg">
         Reset
-      </Button>{' '}
-      <Button kind="button" size="lg" disabled>
-        Disabled
       </Button>
     </FormGroup>
   </form>
 )
 
 export default withFormik<{}, CreateSnippetFormValues>({
-  mapPropsToValues: props => ({ title: '', description: '', language: '', body: '' }),
+  mapPropsToValues: props => ({ title: '', description: '', language: 'javascript', body: '' }),
   validationSchema: Yup.object().shape({
     title: Yup.string().required('Title is required'),
     body: Yup.string().required('Code is required')
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
     console.log(values)
+    setSubmitting(false)
   }
 })(CreateSnippetForm)

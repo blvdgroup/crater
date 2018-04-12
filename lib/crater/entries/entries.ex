@@ -38,6 +38,11 @@ defmodule Crater.Entries do
   def get_snippet!(id), do: Repo.get!(Snippet, id) |> Repo.preload(:user)
 
   @doc """
+  Gets a snippet by its slug.
+  """
+  def get_snippet_by_slug!(slug), do: Repo.get_by!(Snippet, slug: slug)
+
+  @doc """
   Creates a snippet.
 
   ## Examples

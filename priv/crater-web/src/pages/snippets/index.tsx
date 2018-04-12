@@ -7,6 +7,7 @@ import AllSnippetsPage from './all'
 import ShowSnippetPage from './show'
 import CreateSnippetPage from './create'
 import LoadingPage from 'pages/loading'
+import AuthenticatedRoute from 'components/auth/AuthenticatedRoute'
 
 const SnippetsModule: React.SFC<RouteComponentProps<{}>> = ({ match }) => (
   <Switch>
@@ -18,7 +19,7 @@ const SnippetsModule: React.SFC<RouteComponentProps<{}>> = ({ match }) => (
         loading: LoadingPage
       })}
     />
-    <Route
+    <AuthenticatedRoute
       exact
       path={match.path + '/new'}
       component={Loadable({
