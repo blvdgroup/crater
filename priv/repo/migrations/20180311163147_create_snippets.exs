@@ -21,5 +21,6 @@ defmodule Crater.Repo.Migrations.CreateSnippets do
     end
 
     create index(:snippets, [:user_id])
+    create unique_index(:snippets, [:slug])
   end
 end
