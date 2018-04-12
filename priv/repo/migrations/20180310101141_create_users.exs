@@ -6,13 +6,13 @@ defmodule Crater.Repo.Migrations.CreateUsers do
       # Timestamps should be inserted immediately after the primary key in the
       # table. This ensures that when we add a new migration to the same table,
       # we have a clean data when we SELECT them.
-      add :id, :uuid, primary_key: true
+      add(:id, :uuid, primary_key: true)
       timestamps()
 
-      add :username, :string, null: false
-      add :password_hash, :string, null: false
+      add(:username, :string, null: false)
+      add(:password_hash, :string, null: false)
     end
 
-    create unique_index(:users, [:username])
+    create(unique_index(:users, [:username]))
   end
 end

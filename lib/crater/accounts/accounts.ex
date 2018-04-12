@@ -40,7 +40,7 @@ defmodule Crater.Accounts do
   def get_user_by_username!(username) do
     User
     |> where(username: ^username)
-    |> Repo.one!
+    |> Repo.one!()
   end
 
   @doc """
@@ -50,6 +50,7 @@ defmodule Crater.Accounts do
     case Repo.get_by(User, username: username) do
       nil ->
         {:error, :not_found}
+
       user ->
         if Pbkdf2.checkpw(password, user.password_hash) do
           {:ok, user}

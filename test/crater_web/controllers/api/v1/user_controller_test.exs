@@ -9,14 +9,14 @@ defmodule CraterWeb.Api.V1.UserControllerTest do
 
   test "POST /api/users creates user and renders resource" do
     conn = build_conn()
-    conn = post conn, api_v1_user_path(conn, :create), user: @valid_attrs
+    conn = post(conn, api_v1_user_path(conn, :create), user: @valid_attrs)
     assert json_response(conn, 201)
     assert Repo.get_by(User, username: "resir014")
   end
 
   test "POST /api/users renders errors when data is invalid" do
     conn = build_conn()
-    conn = post conn, api_v1_user_path(conn, :create), user: @invalid_attrs
+    conn = post(conn, api_v1_user_path(conn, :create), user: @invalid_attrs)
     assert json_response(conn, 422)
   end
 end

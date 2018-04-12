@@ -4,7 +4,8 @@ defmodule CraterWeb.Api.V1.EntriesView do
 
   def render("index.json", %{snippets: snippets}) do
     %{
-      status: :ok, data: %{
+      status: :ok,
+      data: %{
         snippets: render_many(snippets, EntriesView, "snippet.json", as: :snippet)
       }
     }
@@ -14,7 +15,7 @@ defmodule CraterWeb.Api.V1.EntriesView do
     %{status: :ok, data: render_one(snippet, EntriesView, "snippet.json", as: :snippet)}
   end
 
-  def render("error.json",  %{message: message}) do
+  def render("error.json", %{message: message}) do
     %{
       status: :error,
       message: message

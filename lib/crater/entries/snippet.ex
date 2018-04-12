@@ -12,11 +12,11 @@ defmodule Crater.Entries.Snippet do
   @optional_fields ~w(description slug)a
 
   schema "snippets" do
-    field :body, :string
-    field :description, :string
-    field :language, :string
-    field :slug, :string
-    field :title, :string
+    field(:body, :string)
+    field(:description, :string)
+    field(:language, :string)
+    field(:slug, :string)
+    field(:title, :string)
     belongs_to(:user, User, type: :binary_id, foreign_key: :user_id)
 
     timestamps()
@@ -42,6 +42,7 @@ defmodule Crater.Entries.Snippet do
   end
 
   defp get_user(nil), do: nil
+
   defp get_user(id) do
     Accounts.get_user!(id)
   end

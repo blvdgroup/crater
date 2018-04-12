@@ -9,9 +9,9 @@ defmodule Crater.Accounts.User do
   @foreign_key_type :binary_id
 
   schema "users" do
-    field :username, :string
-    field :password_hash, :string
-    field :password, :string, virtual: true
+    field(:username, :string)
+    field(:password_hash, :string)
+    field(:password, :string, virtual: true)
 
     timestamps()
   end
@@ -43,5 +43,6 @@ defmodule Crater.Accounts.User do
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
     change(changeset, password_hash: Pbkdf2.hashpwsalt(password))
   end
+
   defp put_pass_hash(changeset), do: changeset
 end

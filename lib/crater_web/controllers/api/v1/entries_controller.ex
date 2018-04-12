@@ -24,10 +24,12 @@ defmodule CraterWeb.Api.V1.EntriesController do
         |> put_status(:created)
         |> put_resp_header("location", api_v1_entries_path(conn, :show, snippet))
         |> render("show.json", snippet: snippet)
+
       {:error, :unauthorized} ->
         conn
         |> put_status(:unauthorized)
         |> render("error.json", message: "Unauthorized")
+
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -39,5 +41,4 @@ defmodule CraterWeb.Api.V1.EntriesController do
     params
     |> Map.merge(%{"user_id" => user.id})
   end
-
 end

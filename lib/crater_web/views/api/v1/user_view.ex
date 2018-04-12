@@ -6,7 +6,7 @@ defmodule CraterWeb.Api.V1.UserView do
     %{status: :ok, data: render_one(user, UserView, "user.json")}
   end
 
-  def render("error.json",  %{message: message}) do
+  def render("error.json", %{message: message}) do
     %{
       status: :error,
       message: message
@@ -27,7 +27,7 @@ defmodule CraterWeb.Api.V1.UserView do
     }
   end
 
-  def render("register.json",  %{user: user}) do
+  def render("register.json", %{user: user}) do
     %{
       status: :ok,
       data: %{
@@ -39,7 +39,6 @@ defmodule CraterWeb.Api.V1.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id,
-        username: user.username}
+    %{id: user.id, username: user.username}
   end
 end

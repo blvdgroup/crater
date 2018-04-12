@@ -1,15 +1,15 @@
 defmodule CraterWeb.ErrorView do
   use CraterWeb, :view
 
-  def render("401.json", %{"message": message}) do
+  def render("401.json", %{message: message}) do
     %{status: :error, message: message}
   end
 
-  def render("404.json", %{"message": message}) do
+  def render("404.json", %{message: message}) do
     %{status: :error, message: message}
   end
 
-  def render("500.json", %{"message": message}) do
+  def render("500.json", %{message: message}) do
     %{status: :error, message: message}
   end
 
