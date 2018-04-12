@@ -18,7 +18,10 @@ defmodule Crater.Entries do
 
   """
   def list_snippets do
-    Repo.all(Snippet) |> Repo.preload(:user)
+    snippets = Repo.all(Snippet)
+
+    snippets
+    |> Repo.preload(:user)
   end
 
   @doc """
@@ -35,7 +38,12 @@ defmodule Crater.Entries do
       ** (Ecto.NoResultsError)
 
   """
-  def get_snippet!(id), do: Repo.get!(Snippet, id) |> Repo.preload(:user)
+  def get_snippet!(id) do
+    snippet = Repo.get!(Snippet, id)
+
+    snippet
+    |> Repo.preload(:user)
+  end
 
   @doc """
   Gets a snippet by its slug.

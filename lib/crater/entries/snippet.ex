@@ -2,7 +2,7 @@ defmodule Crater.Entries.Snippet do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Crater.{Accounts, Accounts.User}
+  alias Crater.Accounts.User
 
   # :binary_id is managed by drivers/adapters, it will be UUID for mysql
   # but can be ObjectID if later you decide to use mongo
@@ -39,12 +39,6 @@ defmodule Crater.Entries.Snippet do
     else
       changeset
     end
-  end
-
-  defp get_user(nil), do: nil
-
-  defp get_user(id) do
-    Accounts.get_user!(id)
   end
 
   defp slugify(str) do

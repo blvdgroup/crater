@@ -36,9 +36,4 @@ defmodule CraterWeb.Api.V1.EntriesController do
         |> render(CraterWeb.ChangesetView, "error.json", changeset: changeset)
     end
   end
-
-  defp create_params(params, user) do
-    params
-    |> Map.merge(%{"user_id" => user.id})
-  end
 end
