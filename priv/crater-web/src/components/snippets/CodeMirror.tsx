@@ -17,7 +17,7 @@ interface CodeMirrorProps {
   field: string
   onChange: (field: string, value: any) => void
   onBlur: (field: string, isTouched?: boolean | undefined) => void
-  touched?: (true & string) | (false & string)
+  touched?: boolean
   errors?: any
 }
 
