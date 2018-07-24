@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { InjectedFormikProps, withFormik } from 'formik'
 import { Controlled as CodeEditor, IInstance } from 'react-codemirror2'
 import { EditorChange } from 'codemirror'
 import styled from 'styled-components'

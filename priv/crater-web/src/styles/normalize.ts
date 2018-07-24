@@ -1,8 +1,7 @@
 import { injectGlobal } from 'styled-components'
 import styledNormalize from 'styled-normalize'
-import { fonts, pxSizes, emSizes } from 'styles/variables'
+import { fonts, pxSizes } from 'styles/variables'
 import { colors } from 'styles/variables'
-import { onEvent, media } from 'styles/mixins'
 
 export default () => injectGlobal`
   ${styledNormalize}
@@ -40,9 +39,9 @@ export default () => injectGlobal`
     color: ${colors.white};
     text-decoration: none;
 
-    ${onEvent`
+    &:hover, &:focus {
       text-decoration: underline;
-    `}
+    }
   }
 
   img {

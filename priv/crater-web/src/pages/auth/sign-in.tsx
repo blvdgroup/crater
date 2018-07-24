@@ -1,5 +1,4 @@
 import * as React from 'react'
-import axios from 'axios'
 import * as Cookies from 'js-cookie'
 import { RouteComponentProps, Redirect } from 'react-router'
 import { connect } from 'react-redux'
@@ -9,7 +8,7 @@ import Page from 'components/layout/Page'
 import Container from 'components/layout/Container'
 import { ApplicationState, ConnectedReduxProps } from 'store'
 import { AuthState } from 'store/auth/types'
-import { setLoggedIn, setActiveUser, checkAuthComplete } from 'store/auth/actions'
+import { checkAuthComplete } from 'store/auth/actions'
 
 interface AuthSignInPageState {
   formState: {
@@ -18,7 +17,7 @@ interface AuthSignInPageState {
   }
 }
 
-type Props = RouteComponentProps<{}> & AuthState & ConnectedReduxProps<AuthState>
+type Props = RouteComponentProps<{}> & AuthState & ConnectedReduxProps
 
 class AuthSignInPage extends React.Component<Props, AuthSignInPageState> {
   public render() {

@@ -1,5 +1,3 @@
-import { Action } from 'redux'
-
 // State
 
 export interface AuthState {

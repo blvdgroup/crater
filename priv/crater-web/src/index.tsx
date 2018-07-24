@@ -1,8 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { ConnectedRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 import axios from 'axios'
 import * as Cookies from 'js-cookie'
@@ -12,7 +11,6 @@ import { ApplicationState } from './store'
 import configureStore from './configureStore'
 import * as serviceWorker from './serviceWorker'
 import normalize from 'styles/normalize'
-import { setTokenFromCookie, setActiveUser, setLoggedIn, checkAuth } from 'store/auth/actions'
 
 normalize()
 
@@ -31,10 +29,7 @@ axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.common['Accept'] = 'application/json'
 
 if (jwtToken) {
-  // store.dispatch(setTokenFromCookie(jwtToken))
   axios.defaults.headers.common.Authorization = `Bearer ${jwtToken}`
-
-  store.dispatch(checkAuth())
 } else {
   console.log('Unauthenticated')
 }

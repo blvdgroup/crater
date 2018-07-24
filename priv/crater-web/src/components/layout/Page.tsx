@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { emSizes, colors } from 'styles/variables'
+import { emSizes } from 'styles/variables'
 
 const StyledPage = styled.main`
   display: block;

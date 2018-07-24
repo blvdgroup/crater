@@ -3,9 +3,6 @@ import { Switch, Route, RouteComponentProps } from 'react-router-dom'
 import * as Loadable from 'react-loadable'
 
 import NotFoundPage from 'pages/404'
-import AllSnippetsPage from './all'
-import ShowSnippetPage from './show'
-import CreateSnippetPage from './create'
 import LoadingPage from 'pages/loading'
 import AuthenticatedRoute from 'components/auth/AuthenticatedRoute'
 

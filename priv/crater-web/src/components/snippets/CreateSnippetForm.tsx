@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { InjectedFormikProps, withFormik } from 'formik'
-import styled from 'styled-components'
 import * as Yup from 'yup'
 
-import { colors } from 'styles/variables'
 import CodeMirror from './CodeMirror'
 import FormGroup from '../ui/FormGroup'
 import FormLabel from '../ui/FormLabel'

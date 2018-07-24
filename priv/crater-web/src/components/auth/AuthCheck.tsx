@@ -1,16 +1,17 @@
 import * as React from 'react'
-import { Dispatch, connect } from 'react-redux'
-import { AuthState } from 'store/auth/types'
+import { Dispatch } from 'redux'
+import { connect } from 'react-redux'
 import { checkAuth } from 'store/auth/actions'
-import { Action } from 'history'
-import { ConnectedReduxProps } from 'store'
 
-type Props = ConnectedReduxProps<AuthState>
+interface AuthCheckProps {
+  checkAuth: () => void
+}
 
-class AuthCheck extends React.Component<Props> {
-  public componentWillMount() {
-    this.props.dispatch(checkAuth())
+class AuthCheck extends React.Component<AuthCheckProps> {
+  public componentDidMount() {
+    this.props.checkAuth()
   }
+
   public render() {
     return null
   }
@@ -18,4 +19,11 @@ class AuthCheck extends React.Component<Props> {
 
 const mapStateToProps = () => ({})
 
-export default connect(mapStateToProps)(AuthCheck)
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  checkAuth: () => dispatch(checkAuth())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AuthCheck)

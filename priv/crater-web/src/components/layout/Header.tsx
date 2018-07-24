@@ -1,15 +1,12 @@
 import * as React from 'react'
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
-import { connect, Dispatch } from 'react-redux'
-import { ThunkAction } from 'redux-thunk'
-import { Action } from 'redux'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import styled from 'styled-components'
-import { darken } from 'polished'
 
-import { pxSizes, colors, emSizes } from 'styles/variables'
-import Container from './Container'
+import { colors, emSizes } from 'styles/variables'
 import { onEvent } from 'styles/mixins'
-import { ApplicationState, ConnectedReduxProps } from 'store'
+import { ApplicationState } from 'store'
 import { signOut } from 'store/auth/actions'
 import { AuthState } from 'store/auth/types'
 import LogoutLink from '../auth/LogoutLink'
@@ -80,7 +77,8 @@ class Header extends React.Component<Props> {
   }
 
   public render() {
-    const { auth, logOut } = this.props
+    const { auth } = this.props
+
     return (
       <StyledHeader>
         <HeaderInner>
@@ -115,8 +113,11 @@ const mapStateToProps = (state: ApplicationState) => ({
   auth: state.auth
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   logOut: () => dispatch(signOut())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Header))

@@ -3,13 +3,14 @@ import { Route, Switch } from 'react-router-dom'
 import * as Loadable from 'react-loadable'
 
 import Root from 'components/layout/Root'
-import AuthCheck from 'components/auth/AuthCheck'
 import AuthenticatedRoute from 'components/auth/AuthenticatedRoute'
+import AuthCheck from 'components/auth/AuthCheck'
 
 import LoadingPage from 'pages/loading'
 
 const Routes: React.SFC = () => (
   <Root>
+    <AuthCheck />
     <Switch>
       <Route
         exact
