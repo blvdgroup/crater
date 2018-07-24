@@ -10,9 +10,9 @@ import Routes from './Routes'
 import { ApplicationState } from './store'
 import configureStore from './configureStore'
 import * as serviceWorker from './serviceWorker'
-import normalize from 'styles/normalize'
 
-normalize()
+import 'typeface-ibm-plex-mono'
+import 'styles/normalize'
 
 const history = createBrowserHistory()
 

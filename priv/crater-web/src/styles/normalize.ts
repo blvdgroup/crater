@@ -1,9 +1,11 @@
+// tslint:disable:no-unused-expression
+
 import { injectGlobal } from 'styled-components'
 import styledNormalize from 'styled-normalize'
 import { fonts, pxSizes } from 'styles/variables'
 import { colors } from 'styles/variables'
 
-export default () => injectGlobal`
+injectGlobal`
   ${styledNormalize}
 
   html {
